@@ -9,7 +9,6 @@ public class Contato {
     @Column(name = "nome_completo")
     private String nomeCompleto;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String email;
     @Column(name = "telefone_contato")
     private String telefone;
