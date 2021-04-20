@@ -1,5 +1,6 @@
 package com.zup.br.MarketingZup.service;
 
+import com.zup.br.MarketingZup.dtos.FiltroDeContatosDTO;
 import com.zup.br.MarketingZup.model.Contato;
 import com.zup.br.MarketingZup.repositories.ContatoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,5 +50,13 @@ public class ContatoService {
 
     public void deletarContato(String email){
         contatoRepository.deleteById(email);
+    }
+
+
+    public Iterable<Contato> pesquisarTodosOsContatos(FiltroDeContatosDTO filtro){
+        if(filtro.getProdutos() == null){
+            return contatoRepository.findAll();
+        }
+        return contatoRepository.findByProduto(filtro.getProdutos());
     }
 }

@@ -42,5 +42,10 @@ public class ContatoController {
         contatoService.deletarContato(id);
     }
 
+   // @GetMapping
+   // public Iterable<AlbumDTO> retornarTodosOsAlbuns(@ModelAttribute FiltroDeAlbunsDTO filtro ){
+        //Iterable<Album> albuns = albumService.pesquisarTodosOsAlbuns(filtro);
+        //return AlbumDTO.converterIterableDeModelParaDTO(albuns);
+    //}
 
 }
