@@ -1,6 +1,7 @@
 package com.zup.br.MarketingZup.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "produtos")
@@ -10,8 +11,8 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String nome;
 
-    @OneToMany
-    private Categoria categoria;
+    @ManyToMany
+    private List<Categoria> categorias;
 
     public Produto() {
     }
@@ -24,11 +25,11 @@ public class Produto {
         this.nome = nome;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
+    public List<Categoria> getCategorias() {
+        return categorias;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setCategorias(List<Categoria> categorias) {
+        this.categorias = categorias;
     }
 }

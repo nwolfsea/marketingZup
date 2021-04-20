@@ -1,6 +1,7 @@
 package com.zup.br.MarketingZup.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "contatos")
@@ -13,8 +14,8 @@ public class Contato {
     @Column(name = "telefone_contato")
     private String telefone;
 
-    @OneToMany
-    private Produto produto;
+    @ManyToMany
+    private List<Produto> produtos;
 
     public Contato() {
     }
@@ -43,11 +44,11 @@ public class Contato {
         this.telefone = telefone;
     }
 
-    public Produto getProduto() {
-        return produto;
+    public List<Produto> getProdutos() {
+        return produtos;
     }
 
-    public void setProduto(Produto produto) {
-        this.produto = produto;
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
     }
 }
