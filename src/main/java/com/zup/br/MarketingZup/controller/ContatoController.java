@@ -23,10 +23,11 @@ public class ContatoController {
         return contatoService.salvarContato(contato);
     }
 
-    @GetMapping("{contatos/produtos/}/")
-    public List<Contato> listarContatoPelosProdutos(){
+    @GetMapping
+    public List<Contato> listarContatos(){
         return contatoService.retornarTodosOsContatos();
     }
+
 
     @GetMapping("{id}/")
     public Contato buscarContatoPeloId(@PathVariable String id){
