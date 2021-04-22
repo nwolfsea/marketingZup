@@ -2,20 +2,19 @@ package com.zup.br.MarketingZup.dtos;
 
 import com.zup.br.MarketingZup.model.Produto;
 
-import java.util.List;
 
 public class FiltroDeContatosDTO {
 
-    private List<Produto> produtos;
+    private Produto produto;
 
     public FiltroDeContatosDTO() {
     }
 
-    public List<Produto> getProdutos() {
-        return produtos;
+    public Produto getProduto() {
+        return produto;
     }
 
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 }

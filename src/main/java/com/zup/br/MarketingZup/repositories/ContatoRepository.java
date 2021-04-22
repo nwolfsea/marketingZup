@@ -6,7 +6,8 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
+
 public interface ContatoRepository extends CrudRepository<Contato, String> {
 
-    Iterable<Contato> findByProduto(List<Produto> produtos);
+    List<Contato>findAllByProdutosNome(String nome);
 }

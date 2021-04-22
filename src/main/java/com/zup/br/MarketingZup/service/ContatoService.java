@@ -54,9 +54,9 @@ public class ContatoService {
 
 
     public Iterable<Contato> pesquisarTodosOsContatos(FiltroDeContatosDTO filtro){
-        if(filtro.getProdutos() == null){
+        if(filtro.getProduto() == null){
             return contatoRepository.findAll();
         }
-        return contatoRepository.findByProduto(filtro.getProdutos());
+        return contatoRepository.findAllByProdutosNome(filtro.getProduto().getNome());
     }
 }
