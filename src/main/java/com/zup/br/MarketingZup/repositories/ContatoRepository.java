@@ -9,5 +9,5 @@ import java.util.List;
 public interface ContatoRepository extends CrudRepository<Contato, String> {
 
     List<Contato>findAllByProdutosNome(String nome);
-    List<Contato>findAllByCategoriasNome(String nome);
+    List<Contato>findAllByProdutosCategoriasNome(String nome);
 }

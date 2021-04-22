@@ -22,7 +22,7 @@ public class CategoriaController {
         return categoriaService.salvarCategoria(categoria);
     }
 
-    @GetMapping
+    @GetMapping("listar/categorias/}/")
     public List<Categoria> listarCategorias(){
         return categoriaService.retornarTodasAsCategorias();
     }

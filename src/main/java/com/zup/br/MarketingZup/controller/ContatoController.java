@@ -23,10 +23,10 @@ public class ContatoController {
         return contatoService.salvarContato(contato);
     }
 
-   // @GetMapping
-    //public List<Contato> listarContatoPelosProdutos(){
-        //return contatoService.retornarTodosOsContatos();
-    //}
+    @GetMapping("{contatos/produtos/}/")
+    public List<Contato> listarContatoPelosProdutos(){
+        return contatoService.retornarTodosOsContatos();
+    }
 
     @GetMapping("{id}/")
     public Contato buscarContatoPeloId(@PathVariable String id){
@@ -44,13 +44,13 @@ public class ContatoController {
         contatoService.deletarContato(id);
     }
 
-    @GetMapping
+    @GetMapping("{produtos}/")
     public Iterable<ContatoDTO> retornarTodosOsContatosPelosProdutos(@ModelAttribute FiltroDeContatosDTO filtro ){
         Iterable<Contato> contatos = contatoService.pesquisarTodosOsContatosPelosProdutos(filtro);
         return ContatoDTO.converterIterableDeModelParaDTO(contatos);
     }
 
-    @GetMapping("{contatospelascategorias}/")
+    @GetMapping("{categorias}/")
     public Iterable<ContatoDTO> retornarTodosOsContatosPelasCategorias(@ModelAttribute FiltroDeContatosDTO filtro ){
         Iterable<Contato> contatos = contatoService.pesquisarTodosOsContatosPelasCategorias(filtro);
         return ContatoDTO.converterIterableDeModelParaDTO(contatos);

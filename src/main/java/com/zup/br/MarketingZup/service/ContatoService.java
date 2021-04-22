@@ -53,17 +53,17 @@ public class ContatoService {
     }
 
 
-    public Iterable<Contato> pesquisarTodosOsContatosPelosProdutos(FiltroDeContatosDTO filtro){
+    public List<Contato> pesquisarTodosOsContatosPelosProdutos(FiltroDeContatosDTO filtro){
         if(filtro.getProduto() == null){
-            return contatoRepository.findAll();
+            return (List<Contato>) contatoRepository.findAll();
         }
         return contatoRepository.findAllByProdutosNome(filtro.getProduto().getNome());
     }
 
-    public Iterable<Contato> pesquisarTodosOsContatosPelasCategorias(FiltroDeContatosDTO filtro){
+    public List<Contato> pesquisarTodosOsContatosPelasCategorias(FiltroDeContatosDTO filtro){
         if(filtro.getCategoria() == null){
-            return contatoRepository.findAll();
+            return (List<Contato>) contatoRepository.findAll();
         }
-        return contatoRepository.findAllByCategoriasNome(filtro.getCategoria().getNome());
+        return contatoRepository.findAllByProdutosCategoriasNome(filtro.getCategoria().getNome());
     }
 }
