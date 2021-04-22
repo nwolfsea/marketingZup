@@ -10,4 +10,5 @@ public interface ContatoRepository extends CrudRepository<Contato, String> {
 
     List<Contato>findAllByProdutosNome(String nome);
     List<Contato>findAllByProdutosCategoriasNome(String nome);
+    Contato findByEmail(String email);
 }

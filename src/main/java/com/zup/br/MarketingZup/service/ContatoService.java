@@ -2,7 +2,9 @@ package com.zup.br.MarketingZup.service;
 
 import com.zup.br.MarketingZup.dtos.FiltroDeContatosDTO;
 import com.zup.br.MarketingZup.model.Contato;
+import com.zup.br.MarketingZup.model.Produto;
 import com.zup.br.MarketingZup.repositories.ContatoRepository;
+import com.zup.br.MarketingZup.repositories.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,15 +15,39 @@ import java.util.Optional;
 @Service
 public class ContatoService {
 
-@Autowired
+    @Autowired
     private ContatoRepository contatoRepository;
+    @Autowired
+    private ProdutoRepository produtoRepository;
 
     public Contato salvarContato(Contato contato){
         try{
+
+            //verificar se o contato existe na base
+            //se existir, atualizar o contato buscado do banco com
+            //o contato da requisição
+
+            Contato contatoBD = contatoRepository.findByEmail(contato.getEmail());
+            if(contatoBD != null){
+                for (Produto produto : contatoBD.getProdutos()) {
+                   if(!contato.getProdutos().contains(produto)){
+                    contato.getProdutos().add(produto);
+                }}
+            }
+
+            for (Produto produto : contato.getProdutos()) {
+                Produto produtoBD = produtoRepository.findByNome(produto.getNome());
+                if(produtoBD == null){
+                    produtoRepository.save(produto);
+                }
+
+
+            }
             Contato obj = contatoRepository.save(contato);
-            return contato;
+            return obj;
+
         }catch (Exception error){
-            throw new RuntimeException("Contato já cadastrado!");
+            throw new RuntimeException("Erro ao cadastrar contato!");
         }
     }
 

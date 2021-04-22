@@ -15,8 +15,7 @@ public class Contato {
 
     @ManyToMany
     private List<Produto> produtos;
-    @ManyToMany
-    private List<Categoria> categorias;
+
 
     public Contato() {
     }
@@ -53,11 +52,5 @@ public class Contato {
         this.produtos = produtos;
     }
 
-    public List<Categoria> getCategorias() {
-        return categorias;
-    }
 
-    public void setCategorias(List<Categoria> categorias) {
-        this.categorias = categorias;
-    }
 }

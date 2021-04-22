@@ -14,9 +14,13 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 @RestControllerAdvice
 public class ManipuladorDeExcecoes extends ResponseEntityExceptionHandler {
+
+    private final static Logger LOGGER = Logger.getLogger(ManipuladorDeExcecoes.class.getName());
+
     private List<ErroDeValidacaoDTO> criarListaDeErrosDeValidacao(MethodArgumentNotValidException excecao) {
         List <ErroDeValidacaoDTO>erros = new ArrayList<>();
 
@@ -50,8 +54,9 @@ public class ManipuladorDeExcecoes extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({RuntimeException.class})
     public ResponseEntity lidaComRuntimeException(RuntimeException excecao) {
-        RespostaDeErroDTO resposta = new RespostaDeErroDTO(HttpStatus.BAD_REQUEST, "geral", excecao.getMessage());
+        RespostaDeErroDTO resposta = new RespostaDeErroDTO(HttpStatus.INTERNAL_SERVER_ERROR, "geral", excecao.getMessage());
 
+        LOGGER.severe(excecao.getMessage());
         return ResponseEntity.status(resposta.getStatus()).body(resposta);
     }
 
