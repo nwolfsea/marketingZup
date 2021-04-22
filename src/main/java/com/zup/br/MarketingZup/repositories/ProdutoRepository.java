@@ -1,6 +1,5 @@
 package com.zup.br.MarketingZup.repositories;
 
-import com.zup.br.MarketingZup.model.Contato;
 import com.zup.br.MarketingZup.model.Produto;
 import org.springframework.data.repository.CrudRepository;
 

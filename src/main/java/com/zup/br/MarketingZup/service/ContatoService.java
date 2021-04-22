@@ -22,26 +22,18 @@ public class ContatoService {
 
     public Contato salvarContato(Contato contato){
         try{
-
-            //verificar se o contato existe na base
-            //se existir, atualizar o contato buscado do banco com
-            //o contato da requisição
-
             Contato contatoBD = contatoRepository.findByEmail(contato.getEmail());
             if(contatoBD != null){
                 for (Produto produto : contatoBD.getProdutos()) {
                    if(!contato.getProdutos().contains(produto)){
                     contato.getProdutos().add(produto);
-                }}
-            }
+                }} }
 
             for (Produto produto : contato.getProdutos()) {
                 Produto produtoBD = produtoRepository.findByNome(produto.getNome());
                 if(produtoBD == null){
                     produtoRepository.save(produto);
                 }
-
-
             }
             Contato obj = contatoRepository.save(contato);
             return obj;

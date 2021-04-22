@@ -38,12 +38,6 @@ public class ManipuladorDeExcecoes extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(status).body(resposta);
     }
 
-    /**
-     * Trata os erros gerados pelo nosso sistema
-     *
-     * @param excecao o erro gerado pelo sistema
-     * @return resposta de erro formatada
-     */
     @ExceptionHandler({ErroDoSistema.class})
     public ResponseEntity lidaComErrosDoSistema(ErroDoSistema excecao) {
         RespostaDeErroDTO resposta = new RespostaDeErroDTO(excecao.getStatus(), excecao.getTipoDoErro(), excecao.getMessage());
