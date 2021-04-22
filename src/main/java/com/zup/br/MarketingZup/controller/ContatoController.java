@@ -1,5 +1,7 @@
 package com.zup.br.MarketingZup.controller;
 
+import com.zup.br.MarketingZup.dtos.ContatoDTO;
+import com.zup.br.MarketingZup.dtos.FiltroDeContatosDTO;
 import com.zup.br.MarketingZup.model.Contato;
 import com.zup.br.MarketingZup.service.ContatoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +23,10 @@ public class ContatoController {
         return contatoService.salvarContato(contato);
     }
 
-    @GetMapping
-    public List<Contato> listarContato(){
-        return contatoService.retornarTodosOsContatos();
-    }
+   // @GetMapping
+    //public List<Contato> listarContatoPelosProdutos(){
+        //return contatoService.retornarTodosOsContatos();
+    //}
 
     @GetMapping("{id}/")
     public Contato buscarContatoPeloId(@PathVariable String id){
@@ -42,10 +44,16 @@ public class ContatoController {
         contatoService.deletarContato(id);
     }
 
-   // @GetMapping
-   // public Iterable<AlbumDTO> retornarTodosOsAlbuns(@ModelAttribute FiltroDeAlbunsDTO filtro ){
-        //Iterable<Album> albuns = albumService.pesquisarTodosOsAlbuns(filtro);
-        //return AlbumDTO.converterIterableDeModelParaDTO(albuns);
-    //}
+    @GetMapping
+    public Iterable<ContatoDTO> retornarTodosOsContatosPelosProdutos(@ModelAttribute FiltroDeContatosDTO filtro ){
+        Iterable<Contato> contatos = contatoService.pesquisarTodosOsContatosPelosProdutos(filtro);
+        return ContatoDTO.converterIterableDeModelParaDTO(contatos);
+    }
+
+    @GetMapping("{contatospelascategorias}/")
+    public Iterable<ContatoDTO> retornarTodosOsContatosPelasCategorias(@ModelAttribute FiltroDeContatosDTO filtro ){
+        Iterable<Contato> contatos = contatoService.pesquisarTodosOsContatosPelasCategorias(filtro);
+        return ContatoDTO.converterIterableDeModelParaDTO(contatos);
+    }
 
 }

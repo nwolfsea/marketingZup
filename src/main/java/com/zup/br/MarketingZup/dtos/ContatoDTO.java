@@ -1,5 +1,6 @@
 package com.zup.br.MarketingZup.dtos;
 
+import com.zup.br.MarketingZup.model.Categoria;
 import com.zup.br.MarketingZup.model.Contato;
 import com.zup.br.MarketingZup.model.Produto;
 
@@ -20,6 +21,7 @@ public class ContatoDTO {
 
     @NotNull
     private List<Produto> produtos;
+    private List<Categoria> categorias;
 
     public ContatoDTO() {
     }
@@ -56,6 +58,14 @@ public class ContatoDTO {
         this.produtos = produtos;
     }
 
+    public List<Categoria> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(List<Categoria> categorias) {
+        this.categorias = categorias;
+    }
+
     public Contato converterDTOParaModel(){
         Contato contato = new Contato();
 
@@ -63,6 +73,8 @@ public class ContatoDTO {
         contato.setEmail(this.email);
         contato.setTelefone(this.telefone);
         contato.setProdutos(this.produtos);
+
+
 
         return contato;
     }
@@ -84,7 +96,6 @@ public class ContatoDTO {
         contatoDTO.setEmail(contato.getEmail());
         contatoDTO.setTelefone(contato.getTelefone());
         contatoDTO.setProdutos(contato.getProdutos());
-
         return contatoDTO;
     }
 }
